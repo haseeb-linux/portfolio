@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Projects - {{ profile.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="page-header">
+  <div class="container">
+    <span class="section-tag">Portfolio</span>
+    <h1 class="page-title">All <span class="text-gradient">Projects</span></h1>
+    <p class="page-desc">A collection of my work — from web apps to automation tools.</p>
+  </div>
+</section>
+
+<!-- ============ PROJECTS GRID ============ -->
+<section class="section">
+  <div class="container">
+
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-lg-6">
+        <div class="project-card-large">
+          <div class="project-header">
+            <div class="project-icon-large">
+              {% if project.category == "Web Application" %}
+                <i class="bi bi-mortarboard-fill"></i>
+              {% elif project.category == "FinTech" %}
+                <i class="bi bi-graph-up-arrow"></i>
+              {% elif project.category == "Automation" %}
+                <i class="bi bi-envelope-paper-fill"></i>
+              {% else %}
+                <i class="bi bi-code-square"></i>
+              {% endif %}
+            </div>
+            <div>
+              <span class="project-category-badge">{{ project.category }}</span>
+              <span class="project-year">{{ project.year }}</span>
+            </div>
+          </div>
+
+          <div class="project-body-large">
+            <h3 class="project-title-large">{{ project.title }}</h3>
+            <p class="project-description-large">{{ project.long_description or project.description }}</p>
+
+            <div class="project-tech-large">
+              {% for tech in project.tech %}
+                <span class="tech-tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="project-actions-large">
+              <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-primary">
+                <i class="bi bi-eye"></i> View Details
+              </a>
+              <a href="{{ project.github }}" target="_blank" class="btn btn-outline-primary">
+                <i class="bi bi-github"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CTA SECTION ============ -->
+<section class="section cta-section">
+  <div class="container text-center">
+    <h2>Interested in working together?</h2>
+    <p>Let's build something amazing.</p>
+    <a href="{{ url_for('index') }}#contact" class="btn btn-primary btn-lg">
+      <i class="bi bi-envelope-fill"></i> Get In Touch
+    </a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+{% block title %}{{ profile.name }} - {{ profile.title }}{% endblock %}
+
+{% block content %}
+
+<!-- ============ HERO SECTION ============ -->
+<section class="hero-section" id="home">
+  <div class="hero-overlay"></div>
+  <div class="container hero-container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-7">
+        <div class="hero-content">
+          <span class="hero-badge">
+            <span class="badge-dot"></span> Available for opportunities
+          </span>
+
+          <h1 class="hero-title">
+            Hi, I'm <br>
+            <span class="text-gradient">{{ profile.name }}</span>
+          </h1>
+
+          <h2 class="hero-subtitle">
+            <span id="typed-text"></span>
+            <span class="cursor">|</span>
+          </h2>
+
+          <p class="hero-description">
+            {{ profile.bio }}
+          </p>
+
+          <div class="hero-actions">
+            <a href="{{ url_for('projects') }}" class="btn btn-primary btn-lg">
+              <i class="bi bi-briefcase-fill"></i> View Projects
+            </a>
+            <a href="#contact" class="btn btn-outline-primary btn-lg">
+              <i class="bi bi-envelope-fill"></i> Contact Me
+            </a>
+          </div>
+
+          <div class="hero-social">
+            <a href="{{ profile.github }}" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="{{ profile.linkedin }}" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:{{ profile.email }}" title="Email"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="hero-visual">
+          <div class="profile-photo-wrapper">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                 alt="Muhammad Haseeb" 
+                 class="profile-photo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT SECTION ============ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="about-content">
+          <p class="about-intro">
+            I'm a passionate <strong>Network Engineer</strong> and
+            <strong>IT Specialist</strong>, pursuing <strong>BS Information Technology</strong> at
+            <strong>{{ profile.university }}</strong>. I combine networking expertise with
+            modern web development skills.
+          </p>
+          <p>
+            My journey started with curiosity about how networks and systems work — from
+            configuring routers to deploying servers. That curiosity evolved into a deep
+            passion for building complete digital solutions.
+          </p>
+          <p>
+            I've delivered <strong>production-level applications</strong> to real clients —
+            including a <strong>Multi-Campus School LMS</strong> for Mitcon Grammar School
+            serving 3,500+ students. Along with development, I teach Computer Science to
+            9th & 10th grade students at the same institution.
+          </p>
+
+          <div class="about-actions">
+            <a href="{{ profile.github }}" target="_blank" class="btn btn-primary">
+              <i class="bi bi-github"></i> View GitHub
+            </a>
+            <a href="#" class="btn btn-outline-primary">
+              <i class="bi bi-download"></i> Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="about-facts">
+          <div class="fact-card">
+            <i class="bi bi-hdd-network-fill"></i>
+            <div>
+              <h4>Network Engineer</h4>
+              <p>Infrastructure & Systems</p>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="bi bi-mortarboard-fill"></i>
+            <div>
+              <h4>BS-IT</h4>
+              <p>Virtual University</p>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="bi bi-person-video3"></i>
+            <div>
+              <h4>Teaching</h4>
+              <p>9th & 10th Grade CS</p>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="bi bi-code-slash"></i>
+            <div>
+              <h4>3+ Projects</h4>
+              <p>Client Delivered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS SECTION ============ -->
+<section class="section section-dark" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Tech <span class="text-gradient">Stack</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <i class="bi bi-code-square"></i>
+            <h3>Languages</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Python</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>JavaScript</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>HTML5</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>CSS3</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>SQL</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>C++</span><span>70%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="70"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <i class="bi bi-boxes"></i>
+            <h3>Frameworks</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Flask</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>SQLAlchemy</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Bootstrap 5</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Jinja2</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <i class="bi bi-hdd-network-fill"></i>
+            <h3>Networking & Tools</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Network Config</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Linux</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Git & GitHub</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Windows Server</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>TCP/IP & Routing</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE SECTION ============ -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Work <span class="text-gradient">Experience</span></h2>
+    </div>
+
+    <div class="experience-timeline">
+      {% for exp in experience %}
+      <div class="experience-item">
+        <div class="experience-dot"></div>
+        <div class="experience-card">
+          <div class="experience-header">
+            <div>
+              <h4>{{ exp.role }}</h4>
+              <p class="experience-company">
+                <i class="bi bi-building"></i> {{ exp.company }}
+              </p>
+            </div>
+            <span class="experience-duration">
+              <i class="bi bi-calendar"></i> {{ exp.duration }}
+            </span>
+          </div>
+          <p class="experience-description">{{ exp.description }}</p>
+          <ul class="experience-achievements">
+            {% for achievement in exp.achievements %}
+            <li><i class="bi bi-check-circle-fill"></i> {{ achievement }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PROJECTS ============ -->
+<section class="section section-dark" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+    </div>
+
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-lg-4">
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-icon">
+              {% if project.category == "Client Project" %}
+                <i class="bi bi-mortarboard-fill"></i>
+              {% elif project.category == "FinTech" %}
+                <i class="bi bi-graph-up-arrow"></i>
+              {% elif project.category == "Automation" %}
+                <i class="bi bi-envelope-paper-fill"></i>
+              {% else %}
+                <i class="bi bi-code-square"></i>
+              {% endif %}
+            </div>
+            <span class="project-category">{{ project.category }}</span>
+          </div>
+
+          <div class="project-body">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+
+            <div class="project-tech">
+              {% for tech in project.tech[:4] %}
+                <span class="tech-tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="project-actions">
+              <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-sm btn-primary">
+                <i class="bi bi-eye"></i> View Details
+              </a>
+              <a href="{{ project.github }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{{ url_for('projects') }}" class="btn btn-outline-primary btn-lg">
+        View All Projects <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT SECTION ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-title">Let's <span class="text-gradient">Work Together</span></h2>
+      <p class="section-desc">Have a project in mind? Let's talk about it.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-3 col-md-6">
+        <a href="mailto:{{ profile.email }}" class="contact-card">
+          <i class="bi bi-envelope-fill"></i>
+          <h4>Email</h4>
+          <p>{{ profile.email }}</p>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <a href="{{ profile.github }}" target="_blank" class="contact-card">
+          <i class="bi bi-github"></i>
+          <h4>GitHub</h4>
+          <p>haseeb-linux</p>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <a href="{{ profile.linkedin }}" target="_blank" class="contact-card">
+          <i class="bi bi-linkedin"></i>
+          <h4>LinkedIn</h4>
+          <p>Muhammad Haseeb</p>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="contact-card">
+          <i class="bi bi-geo-alt-fill"></i>
+          <h4>Location</h4>
+          <p>{{ profile.location }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
