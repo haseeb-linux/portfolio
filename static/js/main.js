@@ -59,7 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
   skillBars.forEach((bar) => observer.observe(bar));
 
   // ============ FADE IN ON SCROLL ============
-  const fadeElements = document.querySelectorAll(".project-card, .fact-card, .skill-category, .contact-card, .experience-card");
+  const fadeElements = document.querySelectorAll(
+    ".project-card, .fact-card, .skill-category, .contact-card, .experience-card"
+  );
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {

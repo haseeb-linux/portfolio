@@ -3,7 +3,7 @@ Muhammad Haseeb - Portfolio Website
 """
 import os
 from datetime import datetime
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,9 +11,6 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'portfolio-secret-2025')
 
-# ============================================================
-# PROFILE DATA
-# ============================================================
 PROFILE = {
     "name": "Muhammad Haseeb",
     "title": "Network Engineer",
@@ -26,9 +23,6 @@ PROFILE = {
     "bio": "Network Engineer and IT specialist with hands-on experience in network infrastructure, system administration, and building production-grade web applications.",
 }
 
-# ============================================================
-# PROJECTS
-# ============================================================
 PROJECTS = [
     {
         "id": "mitcon-lms",
@@ -44,7 +38,7 @@ PROJECTS = [
             "Daily Diary System with chapter-wise notes",
             "Attendance Tracking & Fee Management",
             "Public Announcements (no login required)",
-            "✅ Delivered to real client - Mitcon Grammar School",
+            "Delivered to real client - Mitcon Grammar School",
         ],
         "github": "https://github.com/haseeb-linux/mitcon-grammar-school-lms",
         "status": "Delivered",
@@ -90,9 +84,6 @@ PROJECTS = [
     },
 ]
 
-# ============================================================
-# EXPERIENCE
-# ============================================================
 EXPERIENCE = [
     {
         "role": "Computer Science Teacher (9th & 10th Grade)",
@@ -118,9 +109,6 @@ EXPERIENCE = [
     },
 ]
 
-# ============================================================
-# EDUCATION
-# ============================================================
 EDUCATION = [
     {
         "degree": "BS Information Technology",
@@ -130,25 +118,23 @@ EDUCATION = [
     },
 ]
 
-# ============================================================
-# ROUTES
-# ============================================================
+
 @app.route("/")
 def index():
     return render_template("index.html",
-                         profile=PROFILE,
-                         projects=PROJECTS,
-                         experience=EXPERIENCE,
-                         education=EDUCATION,
-                         year=datetime.now().year)
+                           profile=PROFILE,
+                           projects=PROJECTS,
+                           experience=EXPERIENCE,
+                           education=EDUCATION,
+                           year=datetime.now().year)
 
 
 @app.route("/projects")
 def projects():
     return render_template("projects.html",
-                         profile=PROFILE,
-                         projects=PROJECTS,
-                         year=datetime.now().year)
+                           profile=PROFILE,
+                           projects=PROJECTS,
+                           year=datetime.now().year)
 
 
 @app.route("/projects/<project_id>")
@@ -157,9 +143,19 @@ def project_detail(project_id):
     if not project:
         return render_template("404.html", profile=PROFILE), 404
     return render_template("project_detail.html",
-                         profile=PROFILE,
-                         project=project,
-                         year=datetime.now().year)
+                           profile=PROFILE,
+                           project=project,
+                           year=datetime.now().year)
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
 
 
 @app.route("/api/contact", methods=["POST"])
